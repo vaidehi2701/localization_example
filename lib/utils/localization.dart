@@ -19,7 +19,7 @@ class AppLocalization {
 
   Future loadLanguage() async {
     String jsonStringValues =
-        await rootBundle.loadString("localization/${_locale.languageCode}.json");
+        await rootBundle.loadString("assets/localization/${_locale.languageCode}.json");
     Map<String, dynamic> mappedValues = json.decode(jsonStringValues);
 
     _localizedValues =

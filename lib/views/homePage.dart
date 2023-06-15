@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
@@ -19,66 +19,82 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
     Get.put(HomeController());
     return Scaffold(
-        appBar: AppBar(actions: [
-          DropdownButton<Language>(
-            onChanged: (Language? newValue) {
-              Get.find<HomeController>()
-                  .updateLocale(_changeLanguage(newValue!, context));
-            },
-            items: Language.languageList()
-                .map<DropdownMenuItem<Language>>((Language value) {
-              return DropdownMenuItem<Language>(
-                value: value,
-                child: Text(value.name.toString()),
-              );
-            }).toList(),
-          )
-        ]),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset(
-                    "assets/images/avatar.png",
-                    fit: BoxFit.cover,
-                  ),
-                  Image.asset("assets/images/menu.png", fit: BoxFit.cover),
-                  Image.asset("assets/images/upload.png", fit: BoxFit.cover),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SemiBold(
-                      name: AppLocalization.of(context)
-                          .getTranslatedValue("vishnu")
+                  Expanded(
+                    child: Text(
+                      AppLocalization.of(context)
+                          .getTranslatedValue("full_title")
                           .toString(),
-                      size: 30),
+                      style: const TextStyle(
+                          fontSize: 25, color: Color(0xffA5A5A5)),
+                    ),
+                  ),
+                  DropdownButton<Language>(
+                    underline: const SizedBox(),
+                    padding: EdgeInsets.zero,
+                    icon: Image.asset(
+                      "assets/images/language.png",
+                      height: 30,
+                      color: Colors.white,
+                    ),
+                    onChanged: (Language? newValue) {
+                      print("click");
+                      Get.find<HomeController>()
+                          .updateLocale(_changeLanguage(newValue!, context));
+                    },
+                    items: Language.languageList()
+                        .map<DropdownMenuItem<Language>>((Language value) {
+                      return DropdownMenuItem<Language>(
+                        value: value,
+                        child: Text(value.name.toString()),
+                      );
+                    }).toList(),
+                  )
                 ],
               ),
             ),
             Expanded(
+              child: AnimationLimiter(
                 child: StaggeredGridView.countBuilder(
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    padding:
-                        const EdgeInsets.only(right: 10, left: 10, top: 10),
-                    itemCount: listOfData.length,
-                    crossAxisCount: 2,
-                    itemBuilder: (c, index) {
-                      return listOfData[index];
-                    },
-                    staggeredTileBuilder: (i) => const StaggeredTile.fit(1))),
+                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 16,
+                  padding: const EdgeInsets.only(right: 10, left: 10, top: 10),
+                  itemCount: titleList.length,
+                  crossAxisCount: 2,
+                  itemBuilder: (c, index) {
+                    return AnimationConfiguration.staggeredGrid(
+                      position: index,
+                      columnCount: 2,
+                      child: ScaleAnimation(
+                        duration: const Duration(milliseconds: 1000),
+                        child: FadeInAnimation(
+                          child: Padding(
+                            padding: EdgeInsets.only(top: index == 1 ? 60 : 0),
+                            child: CardView(
+                              image: imageList[index],
+                              title: titleList[index],
+                              id: titleList[index],
+                              img: imageList[index],
+                              disc: desriptionList[index],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  staggeredTileBuilder: (i) => const StaggeredTile.fit(1),
+                ),
+              ),
+            )
           ],
         ));
   }
@@ -86,6 +102,7 @@ class _HomeState extends State<Home> {
 
 Locale _changeLanguage(Language language, context) {
   // Use a map to lookup the locale for the given language code.
+  print("click here");
   final locales = {
     "hi": const Locale("hi", "IN"),
     "en": const Locale("en", "US"),

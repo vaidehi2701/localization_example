@@ -3,7 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:visnu_god/utils/controller.dart';
 import 'package:visnu_god/utils/localization.dart';
-import 'package:visnu_god/views/intro_screen.dart';
+import 'package:visnu_god/views/homePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
           Locale('en', 'US'),
           Locale('hi', 'IN'),
         ],
-        home: Intro(),
+        home: Home(),
       ),
     );
   }

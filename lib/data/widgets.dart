@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:visnu_god/utils/localization.dart';
 import 'package:visnu_god/views/detail_screen.dart';
 
 // ignore: must_be_immutable
@@ -35,8 +38,6 @@ class SemiBold extends StatelessWidget {
   }
 }
 
-
-
 // ignore: must_be_immutable
 class Regular extends StatelessWidget {
   // const MainText({ Key? key , }) : super(key: key);
@@ -59,75 +60,79 @@ class Regular extends StatelessWidget {
 
 // ignore: must_be_immutable
 class CardView extends StatelessWidget {
-  CardView(
-      {Key? key,
-      required this.icon,
-      required this.secondimage,
-      required this.title,
-      required this.family,
-      required this.id,
-      required this.img,
-      required this.name,
-      required this.disc,
-      required this.country})
-      : super(key: key);
-  final icon;
+  CardView({
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.id,
+    required this.img,
+    required this.disc,
+  }) : super(key: key);
   // ignore: prefer_typing_uninitialized_variables
-  final secondimage;
-  String title, family, id, country;
-  var disc;
-  var img;
-  var name;
+  final image;
+  String title, id;
+  String disc;
+  String img;
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => DetailScreen(
-                    country: country,
                     description: disc,
                     img: img,
-                    name: name,
-                    num: id,
+                    name: title,
+                    heroTag: id,
                   )),
         );
       },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: const Color(0xffF2F3F5),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Hero(
-                  tag: id,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0),
-                    child: Image.asset(
-                      secondimage,
-                      height: 190,
-                      width: 190,
-                      fit: BoxFit.cover,
+      child: Stack(
+        children: [
+          Hero(
+              tag: id,
+              child: Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Image.asset(
+                    image,
+                    height: 190,
+                    width: 190,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              )),
+          Positioned(
+            bottom: 0,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20)),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                child: Container(
+                  width: 170,
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade200.withOpacity(0.2)),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        AppLocalization.of(context)
+                            .getTranslatedValue(title)
+                            .toString(),
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 20),
+                      ),
                     ),
-                  )),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  title,
-                  style: const TextStyle(color: Colors.black, fontSize: 20),
+                  ),
                 ),
               ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }
 }
-
