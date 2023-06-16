@@ -1,14 +1,14 @@
-class Language {
+class LanguageModel {
   final String name;
   final String flag;
   final String languageCode;
 
-  Language(this.name, this.flag, this.languageCode);
+  LanguageModel(this.name, this.flag, this.languageCode);
 
-  static List<Language> languageList() {
-    return <Language>[
-      Language("English", "US", "en"),
-      Language("हिंदी", "IN", "hi"),
+  static List<LanguageModel> languageList() {
+    return <LanguageModel>[
+      LanguageModel("English", "US", "en"),
+      LanguageModel("हिंदी", "IN", "hi"),
     ];
   }
 }

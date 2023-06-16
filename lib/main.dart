@@ -8,11 +8,13 @@ import 'package:visnu_god/views/homePage.dart';
 void main() {
   runApp(const MyApp());
 }
-
+  //devDiariesWithVee on Instagram
+ //devDiariesWithVee on Youtube
+ //vaidehi2701 on Github/Linkedin
+ 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     Get.put(HomeController());
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
           Locale('en', 'US'),
           Locale('hi', 'IN'),
         ],
-        home: Home(),
+        home: const Home(),
       ),
     );
   }

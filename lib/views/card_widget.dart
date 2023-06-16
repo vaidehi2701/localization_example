@@ -4,61 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:visnu_god/utils/localization.dart';
 import 'package:visnu_god/views/detail_screen.dart';
 
-// ignore: must_be_immutable
-class MainText extends StatelessWidget {
-  // const MainText({ Key? key , }) : super(key: key);
-  String name;
-  double size;
-
-  MainText({Key? key, required this.name, required this.size})
-      : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      name,
-      style: TextStyle(fontFamily: "main", fontSize: size, color: Colors.black),
-    );
-  }
-}
-
-class SemiBold extends StatelessWidget {
-  // const MainText({ Key? key , }) : super(key: key);
-  String name;
-  double size;
-  Color? color;
-  SemiBold({Key? key, required this.name, required this.size, this.color})
-      : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      name,
-      style: TextStyle(
-          fontFamily: "second", fontSize: size, color: color ?? Colors.black),
-    );
-  }
-}
-
-// ignore: must_be_immutable
-class Regular extends StatelessWidget {
-  // const MainText({ Key? key , }) : super(key: key);
-  String name;
-  double size;
-  Color color;
-  Regular(
-      {Key? key, required this.name, required this.size, required this.color})
-      : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      name,
-      style: TextStyle(fontFamily: "first", fontSize: size, color: color),
-    );
-  }
-}
-
-// todo card widgets
-
-// ignore: must_be_immutable
 class CardView extends StatelessWidget {
   CardView({
     Key? key,
@@ -68,8 +13,8 @@ class CardView extends StatelessWidget {
     required this.img,
     required this.disc,
   }) : super(key: key);
-  // ignore: prefer_typing_uninitialized_variables
-  final image;
+
+  String image;
   String title, id;
   String disc;
   String img;

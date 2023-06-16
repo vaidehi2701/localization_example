@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 import 'package:visnu_god/data/data.dart';
-import 'package:visnu_god/data/widgets.dart';
+import 'package:visnu_god/views/card_widget.dart';
 import 'package:visnu_god/utils/controller.dart';
 import 'package:visnu_god/utils/language_model.dart';
 import 'package:visnu_god/utils/localization.dart';
@@ -24,6 +24,9 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.black,
         body: Column(
           children: [
+            const SizedBox(
+              height: 40,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Row(
@@ -38,7 +41,7 @@ class _HomeState extends State<Home> {
                           fontSize: 25, color: Color(0xffA5A5A5)),
                     ),
                   ),
-                  DropdownButton<Language>(
+                  DropdownButton<LanguageModel>(
                     underline: const SizedBox(),
                     padding: EdgeInsets.zero,
                     icon: Image.asset(
@@ -46,14 +49,14 @@ class _HomeState extends State<Home> {
                       height: 30,
                       color: Colors.white,
                     ),
-                    onChanged: (Language? newValue) {
-                      print("click");
+                    onChanged: (LanguageModel? newValue) {
                       Get.find<HomeController>()
                           .updateLocale(_changeLanguage(newValue!, context));
                     },
-                    items: Language.languageList()
-                        .map<DropdownMenuItem<Language>>((Language value) {
-                      return DropdownMenuItem<Language>(
+                    items: LanguageModel.languageList()
+                        .map<DropdownMenuItem<LanguageModel>>(
+                            (LanguageModel value) {
+                      return DropdownMenuItem<LanguageModel>(
                         value: value,
                         child: Text(value.name.toString()),
                       );
@@ -100,9 +103,8 @@ class _HomeState extends State<Home> {
   }
 }
 
-Locale _changeLanguage(Language language, context) {
+Locale _changeLanguage(LanguageModel language, context) {
   // Use a map to lookup the locale for the given language code.
-  print("click here");
   final locales = {
     "hi": const Locale("hi", "IN"),
     "en": const Locale("en", "US"),
