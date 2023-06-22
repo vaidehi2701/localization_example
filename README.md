@@ -1,16 +1,21 @@
-# visnu_god
+# Lord Vishnu Application
 
-A new Flutter project.
+Dive into the world of spirituality with my Flutter app, showcasing the ten incarnations of Lord Vishnu in a captivating animated grid.
+Let the divine stories unfold!🙏🙏
 
-## Getting Started
+Tried localization and animated grid view in this project 😊
 
-This project is a starting point for a Flutter application.
+### ⚡&ensp;Social Media
 
-A few resources to get you started if this is your first Flutter project:
+[<img align="center" alt="DevDiariesWithVee | YouTube" width="28px" src="https://firebasestorage.googleapis.com/v0/b/web-johannesmilke.appspot.com/o/other%2Fsocial%2Fyoutube.png?alt=media" />](https://www.youtube.com/DevDiariesWithVee?sub_confirmation=1)&ensp;YouTube: [@DevDiariesWithVee](https://www.youtube.com/DevDiariesWithVee?sub_confirmation=1 "YouTube DevDiariesWithVee")
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+[<img align="center" alt="DevDiariesWithVee | Instagram" width="28px" src="https://firebasestorage.googleapis.com/v0/b/web-johannesmilke.appspot.com/o/other%2Fsocial%2Finstagram.png?alt=media" />](https://instagram.com/devdiaries_with_vee)&ensp;Instagram: [@DevDiariesWithVee](https://instagram.com/devdiaries_with_vee "Instagram DevDiariesWithVee")
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[<img align="center" alt="Vaidehi shah | LinkedIn" width="28px" src="https://firebasestorage.googleapis.com/v0/b/web-johannesmilke.appspot.com/o/other%2Fsocial%2Flinkedin.png?alt=media" />](https://linkedin.com/in/vaidehi-shah-a2102217a)&ensp;LinkedIn: [@Vaidehi Shah](https://linkedin.com/in/vaidehi-shah-a2102217a "LinkedIn Vaidehi Shah")
+
+
+<a href="https://www.buymeacoffee.com/vaidehishah" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="60" width="300"></a>
+
+<img src="https://github.com/vaidehi2701/visnu_god/assets/55477266/bfba1bbd-8fe7-44f4-b1b9-22ff48fbfdf5" width="300" height="550" />
+
+
